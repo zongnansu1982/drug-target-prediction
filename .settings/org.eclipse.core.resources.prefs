@@ -2,3 +2,6 @@ eclipse.preferences.version=1
 encoding//src/edu/ucsd/dbmi/drugtarget/chemicstrc/Simcomp.java=UTF-8
 encoding//src/edu/ucsd/dbmi/drugtarget/deepwalk/DeepWalkMethod.java=UTF-8
 encoding//src/edu/ucsd/dbmi/drugtarget/genomicsqs/PPSimilarityConvertor.java=UTF-8
+encoding//src/edu/ucsd/dbmi/drugtarget/main/DrugPrediction.java=UTF-8
+encoding//src/edu/ucsd/dbmi/drugtarget/main/Job.java=UTF-8
+encoding//src/edu/ucsd/dbmi/drugtarget/main/TargetPrediction.java=UTF-8

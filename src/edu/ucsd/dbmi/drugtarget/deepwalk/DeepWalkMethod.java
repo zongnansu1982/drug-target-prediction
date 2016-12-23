@@ -117,37 +117,15 @@ public class DeepWalkMethod  {
 	}
 
 	
-	
-//	public HashMap<String,Double> getSimilarDrug(String modelfile, String idxfile, HashSet<String> queries, HashSet<String> allDrugs) throws Exception {
-//		// TODO Auto-generated method stub
-//		BufferedReader br = new BufferedReader(new FileReader(new File(idxfile)));
-//		String line=null;
-//		HashMap<String,Integer> idx= new HashMap<>();
-//		HashMap<Integer,String> iidx= new HashMap<>();
-//		while((line=br.readLine())!=null){
-//			String[] elements=line.split(" ");
-//			idx.put(elements[1], Integer.valueOf(elements[0]));
-//			iidx.put(Integer.valueOf(elements[0]), elements[1]);
-//		}
-//		
-//		HashMap<String,Double> map=new HashMap<>();
-//		GraphVectors graphvector = GraphVectorSerializer.loadTxtVectors(new File(modelfile));
-//		for(String query:queries){
-//			
-//			for(String drug:allDrugs){
-//				if(graphvector.similarity(idx.get(query), idx.get(drug))>0.0&!queries.contains(drug)){
-//	        		if(map.containsKey(drug)){
-//	        		map.put(drug, graphvector.similarity(idx.get(query), idx.get(drug))+map.get(drug));
-//	        		}else{
-//	        		map.put(drug, graphvector.similarity(idx.get(query), idx.get(drug)));
-//	        		}
-//				}
-//			}
-//		}
-//		return map;
-//	}
-	
-	
+	/**
+	 * 保留
+	 * @param modelfile
+	 * @param idxfile
+	 * @param queries
+	 * @param allDrugs
+	 * @return
+	 * @throws Exception
+	 */
 	 public HashMap<String,HashMap<String,Double>> getSimilarDrug(String modelfile, String idxfile,HashSet<String> queries,
 	    		HashSet<String> allDrugs) throws Exception {
 			// TODO Auto-generated method stub
@@ -181,18 +159,20 @@ public class DeepWalkMethod  {
 		}
 	 
 	 
-	/**
-	 * search from drug
-	 * @param modelfile
-	 * @param idxfile
-	 * @param queries
-	 * @param topN
-	 * @return
-	 * @throws Exception
-	 */
-	 public HashMap<String,HashMap<String,Double>> getSimilarDrug(String modelfile, String idxfile, HashSet<String> queries, int topN) throws Exception {
+	 /**
+	  * 保留
+	  * @param modelfile
+	  * @param idxfile
+	  * @param queries
+	  * @param allDrugs
+	  * @return
+	  * @throws Exception
+	  */
+	 
+	 public HashMap<String,Double> getSimilarDrug(String modelfile, String idxfile,String query,
+	    		HashSet<String> allDrugs) throws Exception {
 			// TODO Auto-generated method stub
-		 	BufferedReader br = new BufferedReader(new FileReader(new File(idxfile)));
+		 BufferedReader br = new BufferedReader(new FileReader(new File(idxfile)));
 			String line=null;
 			HashMap<String,Integer> idx= new HashMap<>();
 			HashMap<Integer,String> iidx= new HashMap<>();
@@ -202,30 +182,28 @@ public class DeepWalkMethod  {
 				iidx.put(Integer.valueOf(elements[0]), elements[1]);
 			}
 			
-			
-			HashMap<String,HashMap<String,Double>> map=new HashMap<>();
+		 
 			GraphVectors graphvector = GraphVectorSerializer.loadTxtVectors(new File(modelfile));
-			for(String query:queries){
-				HashMap<String,Double> amap=new HashMap<>();
-//				System.out.println(query+" "+idx.get(query));
-				if(idx.containsKey(query)){
-					int[] lst=graphvector.verticesNearest(idx.get(query), topN*10);
-					for(int i:lst){
-						if(amap.size()<topN){
-							String target=iidx.get(lst[i]);
-				        	if(target.startsWith("<http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/")&graphvector.similarity(idx.get(query), lst[i])>0.0){
-				        		amap.put(target, graphvector.similarity(idx.get(query), lst[i]));
-						}
-						}
-					}		
-				}
+			HashMap<String,Double> amap=new HashMap<>();
 				
-				map.put(query, amap);
-			}
+				for(String drug:allDrugs){
+					if(!query.equals(drug)){
+						amap.put(drug, graphvector.similarity(idx.get(query), idx.get(drug)));
+					}
+				}
 			
-			return map;
+			return amap;
 		}
-	
+	 
+	/**
+	 * 保留
+	 * @param modelfile
+	 * @param idxfile
+	 * @param queries
+	 * @param allTargets
+	 * @return
+	 * @throws Exception
+	 */
 	 public HashMap<String,HashMap<String,Double>> getSimilarTarget(String modelfile, String idxfile,HashSet<String> queries, HashSet<String> allTargets) throws Exception {
 			// TODO Auto-generated method stub
 		 BufferedReader br = new BufferedReader(new FileReader(new File(idxfile)));
@@ -252,47 +230,16 @@ public class DeepWalkMethod  {
 			return map;
 		}
 	 
-//	 public HashMap<String,Double> getSimilarTarget(String modelfile, String idxfile,HashSet<String> queries, HashSet<String> allTargets) throws Exception {
-//			// TODO Auto-generated method stub
-//		 BufferedReader br = new BufferedReader(new FileReader(new File(idxfile)));
-//			String line=null;
-//			HashMap<String,Integer> idx= new HashMap<>();
-//			HashMap<Integer,String> iidx= new HashMap<>();
-//			while((line=br.readLine())!=null){
-//				String[] elements=line.split(" ");
-//				idx.put(elements[1], Integer.valueOf(elements[0]));
-//				iidx.put(Integer.valueOf(elements[0]), elements[1]);
-//			}
-//				
-//		 
-//		 HashMap<String,Double> map=new HashMap<>();
-//		 GraphVectors graphvector = GraphVectorSerializer.loadTxtVectors(new File(modelfile));
-//			for(String query:queries){
-//				
-//				for(String target:allTargets){
-//					if(graphvector.similarity(idx.get(query), idx.get(target))>0.0&!queries.contains(target)){
-//		        		if(map.containsKey(target)){
-//		        		map.put(target, graphvector.similarity(idx.get(query), idx.get(target))+map.get(target));
-//		        		}else{
-//		        		map.put(target, graphvector.similarity(idx.get(query), idx.get(target)));
-//		        		}
-//					
-//					}
-//				}
-//			}
-//			return map;
-//		}
-	 
-	 
 	 /**
-	  * search from target
-	  * @param modelfile
-	  * @param queries
-	  * @param topN
-	  * @return
-	  * @throws Exception
-	  */
-	 public HashMap<String,HashMap<String,Double>> getSimilarTarget(String modelfile, String idxfile, HashSet<String> queries, int topN) throws Exception {
+		 * 保留
+		 * @param modelfile
+		 * @param idxfile
+		 * @param queries
+		 * @param allTargets
+		 * @return
+		 * @throws Exception
+		 */
+	 public HashMap<String,Double> getSimilarTarget(String modelfile, String idxfile,String query, HashSet<String> allTargets) throws Exception {
 			// TODO Auto-generated method stub
 		 BufferedReader br = new BufferedReader(new FileReader(new File(idxfile)));
 			String line=null;
@@ -304,28 +251,17 @@ public class DeepWalkMethod  {
 				iidx.put(Integer.valueOf(elements[0]), elements[1]);
 			}
 			
-		 
-		 HashMap<String,HashMap<String,Double>> map=new HashMap<>();
-			GraphVectors graphvector = GraphVectorSerializer.loadTxtVectors(new File(modelfile));
-			for(String query:queries){
-				HashMap<String,Double> amap=new HashMap<String,Double>();
-				if(idx.containsKey(query)){
-					int[] lst=graphvector.verticesNearest(idx.get(query), topN*10);
-					for(int i:lst){
-						if(amap.size()<topN){
-							String target=iidx.get(lst[i]);
-				        	if(target.startsWith("<http://www4.wiwiss.fu-berlin.de/drugbank/resource/targets/")&graphvector.similarity(idx.get(query), lst[i])>0.0){
-				        		amap.put(target, graphvector.similarity(idx.get(query), lst[i]));
-				        	}
-						}
-					}	
+	    	GraphVectors graphvector = GraphVectorSerializer.loadTxtVectors(new File(modelfile));
+				HashMap<String,Double> amap=new HashMap<>();
+				for(String target:allTargets){
+					if(!query.equals(target)){
+						amap.put(target, graphvector.similarity(idx.get(query), idx.get(target)));
+					}
 				}
-				
-				map.put(query, amap);
-			}
-			
-			return map;
+			return amap;
 		}
+	 
+
 	 
 	 public HashMap<String,HashMap<String, Double>> getSimilarDrug(String modelfile, String idxfile, HashMap<String,HashSet<String>> queries, 
 	    		HashMap<String,HashSet<String>> associations, HashSet<String> allTarget) throws Exception {
@@ -430,93 +366,7 @@ public class DeepWalkMethod  {
 			return list;
 		}
 	 
-	 /**
-	  * search from target
-	  * @param modelfile
-	  * @param queries
-	  * @param topN
-	  * @return
-	  * @throws Exception
-	  */
-	 public HashMap<String,List<Map.Entry<String, Double>>> getSimilarDrug(String modelfile, String idxfile,HashMap<String,HashSet<String>> queries, int topN) throws Exception {
-			// TODO Auto-generated method stub
-		 
-		 	BufferedReader br = new BufferedReader(new FileReader(new File(idxfile)));
-			String line=null;
-			HashMap<String,Integer> idx= new HashMap<>();
-			HashMap<Integer,String> iidx= new HashMap<>();
-			while((line=br.readLine())!=null){
-				String[] elements=line.split(" ");
-				idx.put(elements[1], Integer.valueOf(elements[0]));
-				iidx.put(Integer.valueOf(elements[0]), elements[1]);
-			}
-			
-			HashMap<String,List<Map.Entry<String, Double>>> map=new HashMap<>();
-			GraphVectors graphvector = GraphVectorSerializer.loadTxtVectors(new File(modelfile));
-			for(Entry<String,HashSet<String>> entry:queries.entrySet()){
-				HashMap<String,Double> rankings=new HashMap<>();
-				for(String query:entry.getValue()){
-					int targetCounter=0;
-					if(idx.containsKey(query)){
-						int[] lst=graphvector.verticesNearest(idx.get(query), topN*10);
-						for(int i:lst){
-							if(targetCounter<topN){
-								String target=iidx.get(lst[i]);
-					        	if(target.startsWith("<http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/")&!entry.getValue().contains(target)
-					        			&graphvector.similarity(idx.get(query), lst[i])>0.0){
-					        		targetCounter++;
-					        		Double sim=graphvector.similarity(idx.get(query), lst[i]);
-					        		if(rankings.containsKey(target)){
-					        			rankings.put(target, sim+rankings.get(target));
-					        		}else{
-					        			rankings.put(target, sim);
-					        		}
-					        	}
-							}
-						}	
-					}
-					
-				}
-				
-				List<Map.Entry<String, Double>> list = new ArrayList<Map.Entry<String, Double>>(rankings.entrySet());  
-	    		  
-	    		Collections.sort(list, new Comparator<Map.Entry<String, Double>>() {  
-	    		    @Override  
-	    		    public int compare(Entry<String, Double> o1, Entry<String, Double> o2) {  
-	    		         return o2.getValue().compareTo(o1.getValue()); // 降序  
-//	    		        return o1.getValue().compareTo(o2.getValue()); // 升序  
-	    		    }  
-	    		}); 
-	    		
-//	    		System.err.println("========================================");
-//	    		System.err.println(entry.getKey());
-	    		
-	    		
-	    		
-	    		Double max=list.get(0).getValue();
-	    		int length=0;
-	    		Double min=0.0;
-	    		if(topN>list.size()){
-	    			length=list.size();
-	    		}else{
-	    			length=topN;
-	    		}
-	    		min=list.get(length-1).getValue();
-	    		Double nor=max-min;
-	    		
-	    		for (int i = 0; i < length; i++) {
-	    			list.get(i).setValue((list.get(i).getValue()-min)/nor);	
-	    			
-	    		
-//	    			System.err.println(list.get(i).getKey()+" "+list.get(i).getValue());
-//	    			System.err.println("========================================");
-	    		}
-	    		
-	    		map.put(entry.getKey(), list.subList(0, length-1));
-			}
-			
-			return map;
-		}
+	
 	 
 	 public HashMap<String,HashMap<String, Double>> getSimilarTarget(String modelfile, String idxfile,HashMap<String,HashSet<String>> queries, 
 	    		HashMap<String,HashSet<String>> associations, HashSet<String> allTarget) throws Exception {
