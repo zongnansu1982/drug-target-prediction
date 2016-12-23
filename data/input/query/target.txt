@@ -1,0 +1,4 @@
+<http://www4.wiwiss.fu-berlin.de/drugbank/resource/targets/101>
+<http://www4.wiwiss.fu-berlin.de/drugbank/resource/targets/291>
+<http://www4.wiwiss.fu-berlin.de/drugbank/resource/targets/7>
+<http://www4.wiwiss.fu-berlin.de/drugbank/resource/targets/610>

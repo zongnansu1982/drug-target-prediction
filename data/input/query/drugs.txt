@@ -1,0 +1,2 @@
+<http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/DB01110>
+<http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/DB01373>
