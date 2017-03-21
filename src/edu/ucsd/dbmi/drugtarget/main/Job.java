@@ -21,6 +21,8 @@ import org.semanticweb.yars.nx.Node;
 import org.semanticweb.yars.nx.parser.NxParser;
 
 import edu.ucsd.dbmi.drugtarget.deepwalk.DeepWalkMethod;
+import edu.ucsd.dbmi.drugtarget.predict.DrugPrediction;
+import edu.ucsd.dbmi.drugtarget.predict.TargetPrediction;
 
 public class Job {
 	
