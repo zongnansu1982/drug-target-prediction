@@ -31,17 +31,6 @@ public class DeepWalkMethod  {
 	
 	public static void main(String[] args) throws Exception {
 		
-
-   	 for (int i = 1; i < 11; i++) {
-   	
-   	    	String datafile="data/input/drugCloud/data_bi_"+i*100+".nt";
-   	    	String modelfile="data/input/drugCloud/deepwalk_bi_"+i+100+"_100.txt";
-   	    	String idxfile="data/input/drugCloud/deepwalkidx_bi_"+i+100+"_100.txt";
-   	    	String removefile="data/input/drugCloud/removed_bi_"+i*100+".nt";
-   	    	
-   	    	new DeepWalkMethod().training(datafile,  modelfile,  idxfile,  100, 5);
-   	 
-   	 }
 }
 
 	

@@ -21,10 +21,7 @@ public class NToMMappingDetc {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		new NToMMappingDetc().pdbToDrugBank() ;
-		new NToMMappingDetc().keggToPdb() ;
-		new NToMMappingDetc().hgncToDrugBank() ;
-		new NToMMappingDetc().keggToHgnc() ;
+	
 	}
 	
 	

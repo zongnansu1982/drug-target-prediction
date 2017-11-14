@@ -29,15 +29,14 @@ public class Job {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 
-		Job testJob=new Job("data/input/source/tri.nt", "data/input/deep/deepwalk_external_100.txt", "data/input/deep/deepwalkidx_external_100.txt");
+		Job testJob=new Job("data/input/source/network.nt", "data/input/deep/deepwalk_external_100.txt", "data/input/deep/deepwalkidx_external_100.txt");
 		HashMap<String,HashMap<String, Double>> results=testJob.executePredict(Job.deepwalk_similarity,Job.dbsi_prediction,
 				"<http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/DB01110>");
-		print(results,10);
+		print(results,5);
 	}
 	
 	public static final String deepwalk_similarity="Deepwalk";
-	public static final String genomicsqs_similarity="Genomicsqs";
-	public static final String chemicstrc_similarity="Chemicstrc";
+
 	
 	public static final String dbsi_prediction="DBSI";
 	public static final String tbsi_prediction="TBSI";

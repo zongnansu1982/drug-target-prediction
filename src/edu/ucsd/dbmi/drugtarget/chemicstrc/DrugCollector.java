@@ -17,7 +17,6 @@ public class DrugCollector {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		new DrugCollector("data/input/drugbank/drugbank_dump.nt");
 	}
 
 	public HashMap<String, String> ids;

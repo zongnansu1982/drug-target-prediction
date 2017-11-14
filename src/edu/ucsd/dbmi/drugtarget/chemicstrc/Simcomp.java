@@ -31,25 +31,15 @@ public class Simcomp {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
-//		new Simcomp(null,null).getScore("C06865", "D08113",null);
-		Simcomp simcomp=new Simcomp( "data/input/drugbank/drugbank_dump.nt",
-				"D:/data/drug-target/input/tri/external/connected/external_connected_filtered.nt",
-				"D:/data/drug-target/models/sim/drugs");
-		simcomp.getBatchScores("D:/data/drug-target/models/sim/drugs");
-		ProteinSimcomp proteinsimcomp=new ProteinSimcomp();
-		proteinsimcomp.getBatchScores("D:/data/drug-target/models/sim/target");
+
+		
 	}
 	
 	public HashMap<String, String> ids;
 	public HashSet<String> drugs;
 	public HashSet<String> sourceDrugs;
 	public Simcomp(String input, String output) throws IOException{
-//		BufferedWriter bw =new BufferedWriter(new FileWriter(new File(output)));
-//		ids=new HashMap<>();
-//		drugs=new HashSet<>();
-//		DrugCollector collector=new DrugCollector(input);
-//		ids=collector.getIds();
-//		drugs=collector.getDrugs();
+
 	}
 	
 	public Simcomp(String input1, String input2,String outfolder) throws IOException, InterruptedException{
@@ -62,19 +52,7 @@ public class Simcomp {
 		sourceDrugs=collector.getSourceDrugs();
 	}
 	
-//	public void getBatchScores(){
-//		ArrayList<String> list=new ArrayList<>();
-//		for(String drug:drugs){
-//			list.add(drug);
-//		}
-//		int k=0;
-//		for (int i = 0; i < list.size()-1; i++) {
-//			for (int j = i+1; j < list.size(); j++) {
-//				k++;
-//			}
-//		}
-//		System.out.println(k);
-//	}
+
 	
 	
 	public void getBatchScores(String outfolder) throws InterruptedException, IOException{

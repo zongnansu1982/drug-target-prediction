@@ -352,40 +352,5 @@ public class SmithWaterman {
 	public static void main(String[] args) throws IOException {
 
 			
-		HashMap<String, String> idx = new ProteinCollector().getProtein("data/input/drugbank/drugbank_dump.nt");
-//		 <http://www4.wiwiss.fu-berlin.de/drugbank/resource/targets/707> <http://www4.wiwiss.fu-berlin.de/drugbank/resource/targets/4133>
-
-		String tmp1 =new  String(idx.get("<http://www4.wiwiss.fu-berlin.de/drugbank/resource/targets/781>").getBytes(),"UTF-8");
-		String tmp2 =new  String(idx.get("<http://www4.wiwiss.fu-berlin.de/drugbank/resource/targets/4787>").getBytes(),"UTF-8");
-		System.err.println(tmp1);
-		System.err.println(tmp2);
-		StringBuffer sb1 =new StringBuffer();
-		for(String e:tmp1.split("\\\\n")){
-			sb1.append(e+" \n");
-		}
-		StringBuffer sb2 =new StringBuffer();
-		for(String e:tmp2.split("\\\\n")){
-			sb2.append(e+" \n");
-		}
-		
-		String protein1=sb1.toString();
-		String protein2=sb2.toString();
-		
-		
-		
-		String str1 = (new FastaSequence(protein1)).getSequence();
-		String str2 = (new FastaSequence(protein2)).getSequence();
-		
-//		System.out.println(str1);
-//		System.out.println(str2);
-		SmithWaterman sw0 = new SmithWaterman(str1, str2);
-		Double score0 = sw0.getAlignmentScore();
-		SmithWaterman sw1 = new SmithWaterman(str1, str1);
-		Double score1 = sw1.getAlignmentScore();
-		SmithWaterman sw2 = new SmithWaterman(str2, str2);
-		Double score2 = sw2.getAlignmentScore();
-
-		System.err.println("score : " + score0 / (Math.sqrt(score1) * Math.sqrt(score2)));
-
 	}
 }

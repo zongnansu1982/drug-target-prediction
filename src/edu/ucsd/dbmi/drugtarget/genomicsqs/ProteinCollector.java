@@ -17,9 +17,7 @@ public class ProteinCollector {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-//		new ProteinCollector().getProtein("data/input/drugbank/drugbank_dump.nt");
-		new ProteinCollector().getSourceProteinWithInvalidSeq();
-		
+
 	}
 	
 	public HashMap<String, String>  getProtein(String input) throws IOException{

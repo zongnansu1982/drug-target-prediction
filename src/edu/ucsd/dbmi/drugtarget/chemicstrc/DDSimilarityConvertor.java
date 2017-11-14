@@ -17,15 +17,7 @@ public class DDSimilarityConvertor {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		 DDSimilarityConvertor convert=new DDSimilarityConvertor();
-		convert.convert("D:/data/drug-target/models/sim/drugs_gold/enzyme_old.txt",
-				"D:/data/drug-target/models/sim/drugs_gold/enzyme.txt") ;
-		convert.convert("D:/data/drug-target/models/sim/drugs_gold/gpcr_old.txt",
-				"D:/data/drug-target/models/sim/drugs_gold/gpcr.txt") ;
-		convert.convert("D:/data/drug-target/models/sim/drugs_gold/ion_channel_old.txt",
-				"D:/data/drug-target/models/sim/drugs_gold/ion_channel.txt") ;
-		convert.convert("D:/data/drug-target/models/sim/drugs_gold/nuclear_receptor_old.txt",
-				"D:/data/drug-target/models/sim/drugs_gold/nuclear_receptor.txt") ;
+		
 	}
 	
 	HashMap<String,String> keggToDrugBank;
@@ -33,8 +25,7 @@ public class DDSimilarityConvertor {
 	
 	public DDSimilarityConvertor() throws IOException{
 		keggToDrugBank=keggToDrugBank() ;
-//		System.out.println(keggToUniprot);
-//		System.err.println(uniprotToDrugBank);
+
 	}
 	public HashMap<String,String> keggToDrugBank() throws IOException{
 		HashMap<String,String> map=new HashMap<>();
