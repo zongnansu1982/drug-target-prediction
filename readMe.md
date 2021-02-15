@@ -16,7 +16,7 @@ We propose a similarity-based drug-target prediction method that enhances existi
 please check src.edu.ucsd.dbmi.drugtarget.main.Job.java for usegae
 
 # Contact
-For help or questions of using the application, please contact nazong@ucsd.edu
+For help or questions of using the application, please contact zongnansu1982@gmail.com
 
 # Citation
 The authors appreciate to cite our published work,
